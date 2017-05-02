@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pomodoro Timer</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/styles.css">
+		<script scr="js/scripts.js"></script>
+	</head>
+	<body>
+		<div class="outerContainer">
+			<div class="spaceBetween">
+				<div>Session: <input type="text" id="sessionTime" value="25"></div>
+				<div>Break: <input type="text" id="breakTime" value="5"></div>
+			</div>
+			<div class="innerContainer">		
+				<div class="timerContainer">			
+					<a href=""><img src="img/pause.png" /></a>			
+					<label id="timer" class="largeText">25:00</label>
+				</div>		
+				<div class="buttonContainer spaceBetween">
+					<button class="greenBackground">Work</button>
+					<button>Break</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

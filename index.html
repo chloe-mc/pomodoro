@@ -11,10 +11,10 @@
 	<body>
 		<div class="outerContainer">
 			<div class="spaceBetween">
-				<div>Work: <input type="text" id="sessionTime" value="25"></div>
-				<div>Break: <input type="text" id="breakTime" value="5"></div>
+				<div>Work: <input type="text" id="sessionTime" value="25" class="narrow smallText centered"></div>
+				<div>Break: <input type="text" id="breakTime" value="5" class="narrow smallText centered"></div>
 			</div>
-			<div class="innerContainer">		
+			<div class="innerContainerTop">		
 				<div class="timerContainer">			
 					<img id="pause" src="img/timer_pause.png" />
 					<label id="timer" class="largeText">25:00</label>
@@ -22,6 +22,24 @@
 				<div class="buttonContainer spaceBetween">
 					<button id="btnWork" class="greenBackground">Work</button>
 					<button id="btnBreak">Break</button>
+				</div>
+			</div>
+			<div class="innerContainerBottom">
+				<div id="divTaskEntry" class="centered">
+					<input id="enterTask" type="text" placeholder="Enter a Task" class="wide mediumText centered" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter a Task'" />
+				</div>
+				<div id="divTaskIP" class="taskIPContainer hide">
+					<div id="checkbox" class="theLargerLeft">
+						<input type="checkbox" id="check" />
+						<label id="task" for="check" class="mediumText">Create Powerpoint</label>
+					</div>
+					<div class="theSmallerRight">
+						<label id="taskIP" class="mediumText">0</label>
+						<div id="arrows">
+							<a id="upArrow" href='#'><img class="tinyImg" src="img/up_arrow.gif"></a> <br />
+							<a id="downArrow" href='#'><img class="tinyImg" src="img/down_arrow.gif"></a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

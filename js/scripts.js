@@ -4,6 +4,7 @@ var countDownTime;
 var interval;
 var inProgress = false;
 var paused = false;
+var counter = 0;
 
 $(document).ready(function(){
 	//set default session & break times
@@ -56,6 +57,36 @@ $(document).ready(function(){
 			$("#timer").html(leadingZero(breakTime) + ":00");
 		}
 	});
+
+	$("#enterTask").on('keypress', function(e){
+		if (e.which == 13){
+			$('#task').html($("#enterTask").val());
+			$('input#check')[0].checked = false;
+			$('#divTaskIP').removeClass("hide");
+			$('#divTaskEntry').addClass("hide");
+		}	
+	});
+
+	$('input[type="checkbox"]').change(function() {
+		if (this.checked) {			
+			setTimeout(function(){
+				$("#enterTask").val("");
+				$('#divTaskIP').addClass("hide");
+				$('#divTaskEntry').removeClass("hide");	
+				ChangeCounter(0);
+			}, 1000);				
+		}
+	});
+
+	$('#upArrow').click(function(){
+		ChangeCounter(counter + 1);	
+	});
+
+	$('#downArrow').click(function(){
+		if (counter > 0){
+			ChangeCounter(counter - 1);		
+		}		
+	});
 });
 
 function StartCountDown(startTime) {
@@ -68,6 +99,8 @@ function StartCountDown(startTime) {
 		$("#timer").html(leadingZero(minutes) + ":" + leadingZero(seconds));
 		if (countDownTime == 0){
 			StopTimer();
+			ChangeCounter(counter + 1);
+			timerColor();
 		}
 	}, 1000);
 }
@@ -89,11 +122,19 @@ function leadingZero(num) {
 		return num;
 	}
 }
-function timerColor() {
-	$("#innerContainer").animate({
-		backgroundColor: "rgb( 20, 20, 20 )"
-	});
+function timerColor() {	
+	var timer = 20;
+	var blinkInterval = setInterval(function(){
+		$(".innerContainerTop").toggleClass('alert');
+		timer--;
+		if (timer === 0) {
+			clearInterval(blinkInterval);
+		}
+	}, 200);
+} 
+
+function ChangeCounter(val) {
+	counter = val;
+	$('#taskIP').html(val.toString());
 }
-
-
 
